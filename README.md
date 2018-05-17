@@ -1,9 +1,11 @@
 # block-vote
 
-> 블록체인 기술을 일부 적용한 웹 투표 서비스입니다.
+> - 블록체인 기술을 일부 적용한 웹 투표 서비스입니다.
+> - Front-end: Vue.js + Vue router + Vuex
+> - Back-end : Node.js + MariaDB
+> - 개발자: 이근혁(lghlove0509@naver.com)
 
-## 빌드 Setup
-
+## Vue.js 빌드
 ``` bash
 # 의존성 설치
 npm install

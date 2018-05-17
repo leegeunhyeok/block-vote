@@ -7,6 +7,11 @@
           <input class="input" id="sign-input-name" type="text" placeholder="이름">
         </div>
         <div>
+          <input class="input" id="sign-input-age" type="number" min="1" max="150" placeholder="나이">
+          남<input type="radio" name="gender" value="0" checked>
+          여<input type="radio" name="gender" value="1">
+        </div>
+        <div>
           <input class="input" id="sign-input-id" type="text" placeholder="아이디">
         </div>
         <div>
@@ -29,17 +34,35 @@
 export default {
   name: 'Signup',
   methods: {
-    onSubmit: function() {
+    onSubmit: function () {
       const name = document.getElementById('sign-input-name').value
       const id = document.getElementById('sign-input-id').value
+      const age = document.getElementById('sign-input-age').value
+      const gender = document.querySelector('input[name="gender"]:checked').value
       const password1 = document.getElementById('sign-input-password-1').value
       const password2 = document.getElementById('sign-input-password-2').value
-      // this.$http.post('/process/login', {id: id, password: password}).then(result => {
-      //   console.log(result)
-      // }).catch(e => {
-      //   console.log(e)
-      // })
-      console.log(name)
+
+      if(name && id && age && gender && password1 && password2) {
+        if(name.match(/^[a-zA-Z가힣]{2,6}$/)) {
+          if(id.match(/^[a-zA-Z0-9]{6,14}$/)) {
+            if(password1 === password2) {
+              // this.$http.post('/process/login', {id: id, password: password}).then(result => {
+              //   console.log(result)
+              // }).catch(e => {
+              //   console.log(e)
+              // })
+            } else {
+              this.$emit('modal', {header: '알림', body: '비밀번호를 다시 확인해주세요!'})
+            }
+          } else {
+            this.$emit('modal', {header: '알림', body: '아이디는 영문 및 숫자 6~14 자리입니다!'})
+          }
+        } else {
+          this.$emit('modal', {header: '알림', body: '이름은 2~6 자리입니다!'})
+        }
+      } else {
+        this.$emit('modal', {header: '알림', body: '빈칸을 모두 입력해주세요!'})
+      }
     }
   }
 }
@@ -51,6 +74,7 @@ export default {
   background-color: #fff;
   width: 20%;
   height: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -73,6 +97,10 @@ export default {
   top: 85%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
+}
+
+.margin-vertical {
+  margin: 5px 0;
 }
 
 @media (max-width: 768px) {

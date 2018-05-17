@@ -22,15 +22,20 @@
 export default {
   name: 'Login',
   methods: {
-    onSubmit: function() {
+    onSubmit: function () {
       const id = document.getElementById('input-id').value
       const password = document.getElementById('input-password').value
-      // this.$http.post('/process/login', {id: id, password: password}).then(result => {
-      //   console.log(result)
+      // this.$http.post('/process/login', {id: id, password: password}).then(user => {
+      //   console.log(user)
+      //   this.$store.state.id = user.id
+      //   this.$store.state.name = user.name
+      //   this.$store.state.age = user.age
+      //   this.$store.state.gender = user.gender
+      //   this.$emit('onLogin')
       // }).catch(e => {
       //   console.log(e)
       // })
-      this.$emit('modal', {header: 'Header', body: 'Body'})
+      this.$emit('onLogin')
     }
   }
 }
@@ -42,6 +47,7 @@ export default {
   background-color: #fff;
   width: 20%;
   height: 40%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   position: absolute;
   top: 50%;
   left: 50%;

@@ -1,13 +1,15 @@
 <template>
   <div id="app">
-    <div id="main-title">
+    <div id="main-title" v-if="!login">
       <h2>BlockVote</h2>
     </div>
-    <router-view @modal="modalOpen"></router-view>
-    <modal v-if="show" @close="show = false">
-      <div slot="header">{{ modalHeader }}</div>
-      <div slot="body">{{ modalBody }}</div>
-    </modal>
+    <router-view @modal="modalOpen" @onLogin="onLogin"></router-view>
+    <transition name="fade" mode="out-in">
+      <modal v-if="show" @close="show = false">
+        <div slot="header">{{ modalHeader }}</div>
+        <div slot="body">{{ modalBody }}</div>
+      </modal>
+    </transition>
   </div>
 </template>
 
@@ -16,25 +18,32 @@ import Modal from './components/Modal.vue'
 
 export default {
   name: 'App',
-  data() {
+  data () {
     return {
       show: false,
       modalHeader: '',
-      modalBody: ''
+      modalBody: '',
+      login: false
     }
   },
   components: {
     modal: Modal
   },
-  mounted() {
-    this.$router.push({name:'Login'})
+  mounted () {
+    // 세션 체크 후 화면 전환
+    this.$router.push({name: 'Login'})
+    // this.$router.push({name: 'Main'})
   },
   methods: {
-    modalOpen(args) {
+    modalOpen (args) {
       this.modalHeader = args.header
       this.modalBody = args.body
-      this.modalFooter =args.footer
-      this.show = true;
+      this.modalFooter = args.footer
+      this.show = true
+    },
+    onLogin () {
+      this.login = true
+      this.$router.push({name: 'Main'})
     }
   }
 }
@@ -56,11 +65,11 @@ a {
 
 #app {
   text-align: center;
-  background-color: #ccceda;
+  background-color: #f2f2f2;
 }
 
 #main-title {
-  color: #fff;
+  color: #5896ec;
   font-weight: bold;
   font-size: 1.2rem;
   position: absolute;
@@ -76,6 +85,12 @@ a {
   padding: 2px 15px;
   font-size: 1.1rem;
   font-weight: bold;
+}
+
+.btn-primary:hover {
+  background-color: #5896ec;
+  color: #fff;
+  border: 1px solid #fff;
   -webkit-transition: 1s;
   -o-transition: 1s;
   -ms-transition: 1s;
@@ -83,21 +98,18 @@ a {
   transition: 1s;
 }
 
-.button:hover {
-  background-color: #516aea;
-  color: #fff;
-  border: 1px solid #fff;
-}
-
 .btn-primary {
   background-color: #fff;
-  color: #516aea;
-  border: 1px solid #516aea;
+  color: #5896ec;
+  border: 1px solid #5896ec;
 }
 
 .title {
-  color: #516aea;
   font-weight: bold;
+  background-color: #5896ec;
+  color: #fff;
+  margin: 0;
+  padding: 10px;
 }
 
 .input {

@@ -4,9 +4,11 @@
       <div class="modal-wrapper">
         <div class="modal-container">
           <div class="modal-header">
-            <slot name="header">
-              기본 Header
-            </slot>
+            <h3>
+              <slot name="header">
+                기본 Header
+              </slot>
+            </h3>
           </div>
           <div class="modal-body">
             <slot name="body">

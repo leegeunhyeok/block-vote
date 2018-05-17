@@ -8,6 +8,8 @@ import axios from 'axios'
 
 Vue.prototype.$http = axios
 Vue.config.productionTip = false
+Vue.config.devtools = true
+
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
