@@ -18,10 +18,11 @@ const store = new Vuex.Store({
     name: ''
   },
   mutations: {
-    
+    // Mutations
   }
 })
 
+/* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,

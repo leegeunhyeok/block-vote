@@ -35,6 +35,7 @@ export default {
       // }).catch(e => {
       //   console.log(e)
       // })
+      console.log(id, password)
       this.$emit('onLogin')
     }
   }

@@ -26,7 +26,7 @@
 
 <script>
 export default {
-  
+  name: 'modal'
 }
 </script>
 
@@ -72,4 +72,3 @@ export default {
   margin: auto;
 }
 </style>
-

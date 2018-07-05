@@ -42,10 +42,12 @@ export default {
       const password1 = document.getElementById('sign-input-password-1').value
       const password2 = document.getElementById('sign-input-password-2').value
 
-      if(name && id && age && gender && password1 && password2) {
-        if(name.match(/^[a-zA-Z가힣]{2,6}$/)) {
-          if(id.match(/^[a-zA-Z0-9]{6,14}$/)) {
-            if(password1 === password2) {
+      console.log(name, id, age, gender, password1, password2)
+
+      if (name && id && age && gender && password1 && password2) {
+        if (name.match(/^[a-zA-Z가힣]{2,6}$/)) {
+          if (id.match(/^[a-zA-Z0-9]{6,14}$/)) {
+            if (password1 === password2) {
               // this.$http.post('/process/login', {id: id, password: password}).then(result => {
               //   console.log(result)
               // }).catch(e => {

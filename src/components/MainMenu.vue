@@ -37,7 +37,7 @@ export default {
 .content-area {
   cursor: pointer;
   display: inline-block;
-  transition: 1s;  
+  transition: 1s;
 }
 
 .content-area:hover {

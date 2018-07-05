@@ -36,8 +36,8 @@ export default {
     }
   },
   created () {
-    // 세션 체크 
-    if(!this.$store.state.id) {
+    // 세션 체크
+    if (!this.$store.state.id) {
       this.$router.push({name: 'Login'})
     }
     this.$router.push({name: 'Home'})
@@ -45,7 +45,7 @@ export default {
   methods: {
     onSearch () {
       const code = this.code.replace(/ /gi, '').trim()
-      if(code) {
+      if (code) {
         console.log(code) // 투표 참가
       } else {
         this.$emit('modal', {header: '알림', body: '참가 코드를 입력해주세요!'})

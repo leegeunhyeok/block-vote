@@ -53,7 +53,7 @@ export default {
   },
   methods: {
     newItem () {
-      if(this.count == 10) {
+      if (this.count === 10) {
         this.$emit('modal', {header: '알림', body: '항목은 최대 10개 까지 생성 가능합니다!'})
       } else {
         this.count++
@@ -61,7 +61,7 @@ export default {
       }
     },
     removeItem () {
-      if(this.count == 2) {
+      if (this.count === 2) {
         this.$emit('modal', {header: '알림', body: '항목은 최소 2개 이상이어야합니다!'})
       } else {
         this.count--
@@ -79,14 +79,14 @@ export default {
       let d = new Date()
       const month = d.getMonth() + 1
       d.setMonth(month + 1)
-      if(dataSet.title || dataSet.description || dataSet.date) {
-        if(new Date() > new Date(dataSet.date)) {
+      if (dataSet.title || dataSet.description || dataSet.date) {
+        if (new Date() > new Date(dataSet.date)) {
           this.$emit('modal', {header: '알림', body: '마감일은 오늘 날짜보다 커야합니다!'})
-        } else if(new Date(dataSet.date) > d) {
+        } else if (new Date(dataSet.date) > d) {
           this.$emit('modal', {header: '알림', body: '마감일은 다음달 이내로 설정해주세요!'})
         } else {
           const items = document.querySelectorAll('.item-input')
-          for(let item of items) {
+          for (let item of items) {
             dataSet.items.push(item.value)
           }
           this.created = true
@@ -95,7 +95,7 @@ export default {
       }
     },
     onSend () {
-      if(this.dataSet) {
+      if (this.dataSet) {
         this.$http.post('/process/createVote', this.dataSet).then(result => {
           const temp = '3DfvF'
           this.$emit('modal', {header: '성공', body: `투표 참가코드 [${temp}]`})
@@ -122,7 +122,7 @@ export default {
 }
 
 #vote-description {
-  margin-top: 25px; 
+  margin-top: 25px;
 }
 
 #vote-description textarea {

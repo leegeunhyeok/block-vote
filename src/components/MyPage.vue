@@ -29,7 +29,7 @@ export default {
     },
     onSave () {
       console.log('save')
-      if(!this.changed) {
+      if (!this.changed) {
         this.$emit('modal', {header: '알림', body: '각 항목을 클릭하여 수정 가능합니다!'})
       }
     }
